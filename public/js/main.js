@@ -69,7 +69,7 @@ do {
     room = prompt("Enter room name: ");
 } while(room === "");
 
-var socket = io.connect("https://localhost:8080", {
+var socket = io.connect({
 	'forceNew':true,
 	'reconnection': true,
 	'reconnectionDelay': TIME_BETWEEN_ATTEMPTS,
