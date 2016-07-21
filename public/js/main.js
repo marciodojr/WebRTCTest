@@ -148,7 +148,7 @@ function sendMessage(message) {
 
 /* ######################## functions ################################# */
 
-// acessar Webcam
+// access to webcam
 navigator.mediaDevices.getUserMedia(mediaConstraints).then(function(stream){
     feedback("Success: local stream", stream);
     localStream = stream;
@@ -171,7 +171,7 @@ function maybeStart() {
         createPeerConnection();
         // handle stream on local peer
         localPeerConnection.addStream(localStream);
-        feedback("Added local steam to local peer connection");
+        feedback("Added local stream to local peer connection");
         isStarted = true;
         feedback('isInitiator', isInitiator);
         if (isInitiator) {
