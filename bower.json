@@ -1,0 +1,26 @@
+{
+  "name": "WebRTC-Test3",
+  "authors": [
+    "Márcio Dias <marciojr91@gmail.com>"
+  ],
+  "description": "Third WebRTC Application",
+  "main": "public/index.js",
+  "keywords": [
+    "WebRTC",
+    "learning"
+  ],
+  "license": "GPL3",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "webrtc-adapter": "gh-pages"
+  }
+}
