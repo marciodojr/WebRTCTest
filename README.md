@@ -1,5 +1,5 @@
 # WebRTCTest
-Aplicação com webrtc para conexão entre duas pessoas
+WebRTC simple application to connect to peers
 
 ## How to install
 
@@ -13,7 +13,7 @@ Aplicação com webrtc para conexão entre duas pessoas
 `node app.js`
 
 ## How to use
-1. Access the application: https://localhost:8080
+1. Access the application: https://localhost:8080 (change to your ip or servername if you are running this in a real server)
 2. Insert room name
 3. wait for the other peer to insert the same room and connect.
 
