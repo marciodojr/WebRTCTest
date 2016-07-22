@@ -30,8 +30,8 @@ io.sockets.on('connection', function(socket) {
 
   socket.on('message', function(message) {
     log('Client said: ', message);
-    // for a real app, would be room-only (not broadcast)
-    socket.broadcast.emit('message', message);
+    // room only broadcast
+    socket.broadcast.in(socket.room).emit('message', message);
   });
 
   socket.on('create or join', function(roomName) {
@@ -43,18 +43,22 @@ io.sockets.on('connection', function(socket) {
     if (numClients === 1) {
       socket.join(roomName);
       log('Client ID ' + socket.id + ' created room ' + roomName);
-      log('The room ' + roomName + ' now has ' + numClients + ' client(s).');
       socket.emit('created', roomName, socket.id);
     } else if (numClients === 2) {
       io.sockets.in(roomName).emit('join', roomName);
       socket.join(roomName);
       socket.emit('joined', roomName, socket.id);
       log('Client ID ' + socket.id + ' joined room ' + roomName);
-      log('The room ' + roomName + ' now has ' + numClients + ' client(s).');
       io.sockets.in(roomName).emit('ready');
     } else { // max two clients
       socket.emit('full', roomName);
     }
+
+    if(numClients < 3) {
+        log('The room ' + roomName + ' now has ' + numClients + ' client(s).');
+        socket.room = roomName;
+    }
+
   });
 
   socket.on('ipaddr', function() {
@@ -70,6 +74,6 @@ io.sockets.on('connection', function(socket) {
 
   socket.on('error', function(error){
       log('socket error', error);
-  })
+  });
 
 });
