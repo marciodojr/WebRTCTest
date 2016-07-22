@@ -7,7 +7,7 @@ var mediaConstraints = {
         width: {
             min: 640,
             ideal: 1280,
-            max: 1920,
+            max: 1920
         },
         height: {
             min: 480,
@@ -34,6 +34,7 @@ var peerConnectionConfig = {
                 "stun:stun4.l.google.com:19302"
             ]
         }
+        // maybe you can add some turn servers here
     ]
 };
 
@@ -95,6 +96,7 @@ socket.on('full', function(room) {
 socket.on('join', function (room){
   console.log('Another peer made a request to join room ' + room);
   console.log('This peer is the initiator of room ' + room + '!');
+  isInitiator = true;
   isChannelReady = true;
 });
 
