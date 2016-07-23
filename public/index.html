@@ -42,6 +42,85 @@
 
         <!-- WebRTCApp -->
         <script src="/socket.io/socket.io.js"></script>
-        <script src="js/main.js"></script>
+        <script src="js/webRTCApp.js"></script>
+        <script>
+
+            // needed in webRTCApp.js
+            var localVideoId = 'local-video';
+            var remoteVideoId = 'remote-video';
+
+            /**
+             * For more information take a look at
+             * https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
+             */
+            var mediaConstraints = {
+                audio: false,
+                video: {
+                    width: {
+                        min: 640,
+                        ideal: 1280,
+                        max: 1920
+                    },
+                    height: {
+                        min: 480,
+                        ideal: 720,
+                        max: 1080
+                    },
+                    frameRate: {
+                        min: 30,
+                        ideal: 45,
+                        max: 60
+                    },
+                    facingMode: "user"
+                }
+            };
+
+            /**
+             * For more information take a look at
+             * https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/RTCPeerConnection
+             */
+            var peerConnectionConfig = {
+                iceServers: [
+                    {
+                        urls: [
+                            "stun:stun.l.google.com:19302",
+                            "stun:stun1.l.google.com:19302",
+                            "stun:stun2.l.google.com:19302",
+                            "stun:stun3.l.google.com:19302",
+                            "stun:stun4.l.google.com:19302"
+                        ]
+                    },
+                    {
+                        urls: "turn:numb.viagenie.ca",
+                        credential: "webrtcdemo",
+                        username: "louis%40mozilla.com"
+                    }
+                ]
+            };
+
+            /**
+             * For more information take a look at
+             * https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/WebRTC_basics
+             */
+            var sdpConstraints = {
+              'mandatory': {
+                'OfferToReceiveAudio': false,
+                'OfferToReceiveVideo': true
+              }
+            };
+
+            /**
+             * Ask for room name to create or join
+             */
+            var room = null;
+
+            do {
+                room = prompt("Enter room name: ");
+            } while(room === "");
+
+            // starts the application
+            webRTCApp(io, localVideoId, remoteVideoId, mediaConstraints, peerConnectionConfig, sdpConstraints, room);
+
+        </script>
     </body>
 </html>
