@@ -18,4 +18,4 @@ WebRTC simple application to connect to peers
 3. wait for the other peer to insert the same room and connect.
 
 ## Modifications
-If you want to modify some configs take a look at index.html. All the webrtc constraints are there.
+If you want to modify some configs take a look at `public/index.html`. All the webrtc constraints are there.
