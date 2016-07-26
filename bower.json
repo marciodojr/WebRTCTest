@@ -1,9 +1,9 @@
 {
-  "name": "WebRTC-Test3",
+  "name": "webrtc-test",
   "authors": [
     "Márcio Dias <marciojr91@gmail.com>"
   ],
-  "description": "Third WebRTC Application",
+  "description": "Simple WebRTC application",
   "main": "public/index.js",
   "keywords": [
     "WebRTC",
